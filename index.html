@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Smart Space</title>
+</head>
+<body style="background-color: #dee4ec;">
+  <h1><center>Spart Space</center></h1>
+<!-- 
+  <img id="myImage" src="ButtonCircuilar.png" alt="Image03" width="200">
+    <img id="myImage" src="IconFan05.png" alt="Image03" width="100"/>01</img> 
+  </img>
+
+  <img id="myImage" src="ButtonCircuilar.png" alt="Image03" width="200">
+    <img id="myImage" src="IconTube05.png" alt="Image03" width="100"/>02</img> 
+  </img> -->
+  
+  <!-- Fan Button -->
+  <img class="device-button" src="ButtonCircuilar.png" alt="Fan Button" width="200"
+  data-load-num="3" data-load-status="1">
+  <img src="IconFan05.png" alt="Fan Icon" width="100">01
+
+  <!-- Tube Button -->
+  <img class="device-button" src="ButtonCircuilar.png" alt="Tube Button" width="200"
+  data-load-num="3" data-load-status="0">
+  <img src="IconTube05.png" alt="Tube Icon" width="100">02
+
+</body>
+<!-- <script>
+  const img = document.getElementById("myImage");
+
+  img.addEventListener("mousedown", () => {
+    img.src = "ButtonCircularPressed.png";
+  });
+
+  img.addEventListener("mouseup", () => {
+    img.src = "ButtonCircuilar.png";
+  });
+
+  img.addEventListener("mouseleave", () => {
+    img.src = "ButtonCircuilar.png";
+  });
+
+  img.addEventListener("click", () => {
+    fetch("https://mhw4tdxdjyofllxw7yyjnvxytq0sbftl.lambda-url.ap-south-1.on.aws/?load_num=10&load_status=5", {
+      headers: {
+        "Accept": "application/json"
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Response:", data);
+    })
+    .catch(error => {
+      console.error("Fetch error:", error);
+    });
+  });
+
+</script> -->
+<script>
+  document.querySelectorAll('.device-button').forEach(img => {
+
+    img.addEventListener("mousedown", () => {
+      img.src = "ButtonCircularPressed.png";
+    });
+
+    img.addEventListener("mouseup", () => {
+      img.src = "ButtonCircuilar.png";
+    });
+
+    img.addEventListener("mouseleave", () => {
+      img.src = "ButtonCircuilar.png";
+    });
+
+    img.addEventListener("click", () => {
+      const loadNum = img.getAttribute("data-load-num");
+      const loadStatus = img.getAttribute("data-load-status");
+
+      const url = `https://mhw4tdxdjyofllxw7yyjnvxytq0sbftl.lambda-url.ap-south-1.on.aws/?load_num=${loadNum}&load_status=${loadStatus}`;
+
+      fetch(url, {
+        headers: {
+          "Accept": "application/json"
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log("Response:", data);
+      })
+      .catch(error => {
+        console.error("Fetch error:", error);
+      });
+    });
+  });
+</script>
+
+</html>
